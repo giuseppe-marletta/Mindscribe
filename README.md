@@ -1,6 +1,6 @@
 # MindScribe - Il Tuo Co-Autore Intelligente
 
-MindScribe è un'applicazione Python che utilizza l'intelligenza artificiale per aiutarti a organizzare e modificare i tuoi testi in modo intelligente. L'applicazione è stata sviluppata come progetto per l'esame di "Agenti Intelligenti e Machine Learning".
+MindScribe è un'applicazione Python che utilizza l'intelligenza artificiale di Mistral per aiutarti a organizzare e modificare i tuoi testi in modo intelligente. L'applicazione è stata sviluppata come progetto per l'esame di "Agenti Intelligenti e Machine Learning".
 
 ## 🚀 Funzionalità
 
@@ -12,7 +12,7 @@ MindScribe è un'applicazione Python che utilizza l'intelligenza artificiale per
 ## 📋 Prerequisiti
 
 - Python 3.11+
-- OpenAI API Key
+- Mistral AI API Key
 - wkhtmltopdf (per l'esportazione PDF)
 
 ## 🛠️ Installazione
@@ -36,9 +36,9 @@ source venv/bin/activate  # Linux/Mac
 pip install -r requirements.txt
 ```
 
-4. Crea un file `.env` nella root del progetto e aggiungi la tua OpenAI API Key:
+4. Crea un file `.env` nella root del progetto e aggiungi la tua Mistral API Key:
 ```
-OPENAI_API_KEY=your_api_key_here
+MISTRAL_API_KEY=your_api_key_here
 ```
 
 ## 🚀 Utilizzo
