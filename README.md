@@ -8,6 +8,7 @@ MindScribe è un'applicazione Python che utilizza l'intelligenza artificiale di 
 - **Modifica Intelligente**: Modifica il tono e lo stile del testo secondo le tue preferenze
 - **Esportazione**: Salva i documenti in formato Markdown o PDF
 - **Logging**: Traccia tutte le interazioni con l'AI per la valutazione
+- **Interfaccia Web**: UI intuitiva e user-friendly basata su Streamlit
 
 ## 📋 Prerequisiti
 
@@ -43,63 +44,61 @@ MISTRAL_API_KEY=your_api_key_here
 
 ## 🚀 Utilizzo
 
-1. Avvia il server:
+### Backend API
+
+1. Avvia il server FastAPI:
 ```bash
 uvicorn app.main:app --reload
 ```
 
 2. L'API sarà disponibile su `http://localhost:8000`
-
 3. Documentazione API disponibile su `http://localhost:8000/docs`
 
-### Endpoint Principali
+### Frontend Streamlit
 
-- `POST /organize`: Organizza il testo in input
-- `POST /edit`: Modifica il testo secondo le istruzioni
-- `POST /export`: Esporta il testo in Markdown o PDF
-
-## 📝 Esempio di Utilizzo
-
-```python
-import requests
-
-# Organizza un testo
-response = requests.post("http://localhost:8000/organize", 
-    json={"content": "Il tuo testo qui..."})
-organized_text = response.json()["organized_text"]
-
-# Modifica il testo
-response = requests.post("http://localhost:8000/edit",
-    json={
-        "content": organized_text,
-        "instruction": "Rendi il testo più formale"
-    })
-edited_text = response.json()["edited_text"]
-
-# Esporta in PDF
-response = requests.post("http://localhost:8000/export",
-    json={
-        "content": edited_text,
-        "format": "pdf"
-    })
+1. In un nuovo terminale, avvia l'interfaccia Streamlit:
+```bash
+streamlit run app/frontend.py
 ```
+
+2. Apri il browser all'indirizzo mostrato (solitamente `http://localhost:8501`)
+
+### Utilizzo dell'Interfaccia
+
+1. **Inserimento del Testo**:
+   - Incolla o scrivi il tuo testo nell'area di input
+   - Il testo può essere di qualsiasi lunghezza
+
+2. **Organizzazione**:
+   - Clicca su "Organizza il testo" per strutturare automaticamente il contenuto
+   - Il testo verrà organizzato in capitoli e sezioni
+
+3. **Modifica**:
+   - Clicca su "Modifica il testo"
+   - Inserisci l'istruzione di modifica (es. "rendi più formale")
+   - Il testo verrà modificato secondo le tue indicazioni
+
+4. **Esportazione**:
+   - Usa i pulsanti di esportazione per salvare il testo in Markdown o PDF
+   - I file verranno salvati nella cartella `output/`
 
 ## 📁 Struttura del Progetto
 
 ```
 mindscribe/
 ├── app/
-│   ├── main.py
-│   ├── routes.py
+│   ├── main.py          # Backend FastAPI
+│   ├── frontend.py      # Interfaccia Streamlit
+│   ├── routes.py        # Endpoint API
 │   ├── agents/
-│   │   ├── organizer.py
-│   │   ├── editor.py
+│   │   ├── organizer.py # Agente organizzatore
+│   │   ├── editor.py    # Agente editor
 │   ├── prompts/
 │   │   ├── organizer_prompt.txt
 │   │   ├── editor_prompt.txt
 │   ├── utils/
-│   │   ├── io.py
-│   │   ├── logger.py
+│   │   ├── io.py       # Gestione file
+│   │   ├── logger.py   # Sistema di logging
 ├── requirements.txt
 ├── .env
 └── README.md
