@@ -1,7 +1,6 @@
 # Importazione delle librerie necessarie
 import os
 from mistralai.client import MistralClient
-from mistralai.models.chat_completion import ChatMessage
 from app.prompts.editor_prompt import EDITOR_PROMPT
 
 # Inizializzazione del client Mistral
@@ -28,8 +27,8 @@ async def edit_text(text: str, instruction: str) -> str:
     try:
         # Preparazione dei messaggi per la chat
         messages = [
-            ChatMessage(role="system", content=EDITOR_PROMPT),
-            ChatMessage(role="user", content=f"Testo da modificare:\n{text}\n\nIstruzione: {instruction}")
+            {"role": "system", "content": EDITOR_PROMPT},
+            {"role": "user", "content": f"Testo da modificare:\n{text}\n\nIstruzione: {instruction}"}
         ]
         
         # Chiamata all'API di Mistral

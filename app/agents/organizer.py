@@ -1,7 +1,6 @@
 # Importazione delle librerie necessarie
 import os
 from mistralai.client import MistralClient
-from mistralai.models.chat_completion import ChatMessage
 from app.prompts.organizer_prompt import ORGANIZER_PROMPT
 
 # Inizializzazione del client Mistral
@@ -27,8 +26,8 @@ async def organize_text(text: str) -> str:
     try:
         # Preparazione dei messaggi per la chat
         messages = [
-            ChatMessage(role="system", content=ORGANIZER_PROMPT),
-            ChatMessage(role="user", content=text)
+            {"role": "system", "content": ORGANIZER_PROMPT},
+            {"role": "user", "content": text}
         ]
         
         # Chiamata all'API di Mistral
