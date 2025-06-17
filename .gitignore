@@ -36,6 +36,7 @@ ENV/
 # Logs
 *.log
 logs/
+prompts_logs/
 
 # Environment variables
 .env
@@ -57,4 +58,17 @@ htmlcov/
 
 # Cache
 .cache/
-.pytest_cache/ 
+.pytest_cache/
+
+# Project specific
+output/
+wkhtmltox.pkg
+get-pip.py
+
+# Local configuration
+config.local.py
+*.local.py
+
+# System files
+.DS_Store
+Thumbs.db 
