@@ -13,20 +13,20 @@ MindScribe è un'applicazione Python che utilizza l'intelligenza artificiale di 
 ## 📋 Prerequisiti
 
 - Python 3.11+
-- Mistral AI API Key
+- Mistral AI API Key (ottienila gratuitamente su [Mistral AI](https://console.mistral.ai/))
 - wkhtmltopdf (per l'esportazione PDF)
 
 ## 🛠️ Installazione
 
 1. Clona il repository:
 ```bash
-git clone https://github.com/tuousername/mindscribe.git
-cd mindscribe
+git clone https://github.com/giuseppe-marletta/Mindscribe.git
+cd Mindscribe
 ```
 
 2. Crea un ambiente virtuale e attivalo:
 ```bash
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate  # Linux/Mac
 # oppure
 .\venv\Scripts\activate  # Windows
@@ -93,12 +93,12 @@ mindscribe/
 │   ├── agents/
 │   │   ├── organizer.py # Agente organizzatore
 │   │   ├── editor.py    # Agente editor
-│   ├── prompts/
-│   │   ├── organizer_prompt.txt
-│   │   ├── editor_prompt.txt
-│   ├── utils/
-│   │   ├── io.py       # Gestione file
-│   │   ├── logger.py   # Sistema di logging
+│   │   ├── prompts/
+│   │   │   ├── organizer_prompt.txt
+│   │   │   ├── editor_prompt.txt
+│   │   ├── utils/
+│   │   │   ├── io.py       # Gestione file
+│   │   │   ├── logger.py   # Sistema di logging
 ├── requirements.txt
 ├── .env
 └── README.md
@@ -115,3 +115,4 @@ Le pull request sono benvenute. Per modifiche importanti, apri prima un issue pe
 ## 📄 Licenza
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
