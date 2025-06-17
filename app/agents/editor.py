@@ -36,7 +36,7 @@ async def edit_text(text: str, instruction: str) -> str:
             model="mistral-large-latest",  # Utilizzo del modello più recente di Mistral
             messages=messages,
             temperature=0.7,  # Bilancia tra creatività e coerenza
-            max_tokens=2000   # Limite di token per la risposta
+            max_tokens=8000   # Limite di token per la risposta
         )
         
         # Estrazione del testo modificato dalla risposta
