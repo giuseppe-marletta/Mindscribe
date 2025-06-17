@@ -41,14 +41,23 @@ async def save_to_file(content: str, format: str) -> str:
         return file_path
         
     elif format.lower() == "pdf":
-        # Conversione in PDF
-        # Prima converti il Markdown in HTML
-        html = markdown2.markdown(content)
-        file_path = f"output/document_{timestamp}.pdf"
-        
-        # Converti l'HTML in PDF usando pdfkit
-        pdfkit.from_string(html, file_path)
-        return file_path
+        try:
+            # Conversione in PDF
+            # Prima converti il Markdown in HTML
+            html = markdown2.markdown(content)
+            file_path = f"output/document_{timestamp}.pdf"
+            
+            # Converti l'HTML in PDF usando pdfkit
+            try:
+                pdfkit.from_string(html, file_path)
+                return file_path
+            except Exception as e:
+                if "wkhtmltopdf" in str(e).lower():
+                    raise Exception("Per esportare in PDF è necessario installare wkhtmltopdf. Per favore, installalo dal sito ufficiale: https://wkhtmltopdf.org/downloads.html")
+                else:
+                    raise Exception(f"Errore durante la conversione in PDF: {str(e)}")
+        except Exception as e:
+            raise Exception(f"Errore durante la generazione del PDF: {str(e)}")
         
     else:
         # Gestione del formato non supportato
