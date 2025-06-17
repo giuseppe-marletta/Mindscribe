@@ -104,12 +104,16 @@ if st.session_state.get('show_edit_form', False):
                     "instruction": instruction
                 })
                 if result:
-                    st.session_state.current_text = result["edited_text"]
-                    st.session_state.last_operation = "edit"
-                    st.session_state.show_output = True  # Mostra l'output dopo la modifica
-                    st.success("Testo modificato con successo!")
-                    st.session_state.show_edit_form = False
-                    st.rerun()  # Ricarica la pagina per nascondere il form
+                    if "Errore:" in result["edited_text"]:
+                        st.error(result["edited_text"])
+                        st.session_state.show_edit_form = True  # Mantieni il form aperto in caso di errore
+                    else:
+                        st.session_state.current_text = result["edited_text"]
+                        st.session_state.last_operation = "edit"
+                        st.session_state.show_output = True  # Mostra l'output dopo la modifica
+                        st.session_state.show_edit_form = False  # Nascondi il form dopo il successo
+                        st.success("Testo modificato con successo!")
+                        st.rerun()  # Ricarica la pagina per nascondere il form
 
 # Mostra il testo organizzato o modificato
 if st.session_state.get('current_text') and (st.session_state.get('last_operation') == "organize" or st.session_state.get('show_output', False)):
