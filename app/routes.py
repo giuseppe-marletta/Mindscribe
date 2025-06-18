@@ -24,7 +24,7 @@ class EditRequest(BaseModel):
 class ExportRequest(BaseModel):
     """Modello per le richieste di esportazione."""
     content: str  # Il contenuto da esportare
-    format: str  # Il formato di esportazione ("markdown" o "pdf")
+    format: str  # Il formato di esportazione (solo "markdown")
 
 # Endpoint per l'organizzazione del testo
 @router.post("/organize")
@@ -78,7 +78,7 @@ async def edit_endpoint(edit_request: EditRequest):
 @router.post("/export")
 async def export_endpoint(export_request: ExportRequest):
     """
-    Endpoint per esportare il testo nel formato specificato.
+    Endpoint per esportare il testo nel formato specificato (solo markdown).
     
     Args:
         export_request (ExportRequest): La richiesta di esportazione contenente il testo e il formato

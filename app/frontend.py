@@ -130,7 +130,7 @@ if st.session_state.organized_text:
     st.markdown(st.session_state.organized_text)
     
     # Opzioni di esportazione per il testo organizzato
-    col3, col4 = st.columns(2)
+    col3, _ = st.columns(2)
     with col3:
         if st.button("📥 Scarica come Markdown", use_container_width=True):
             result = call_api("export", {
@@ -139,25 +139,13 @@ if st.session_state.organized_text:
             })
             if result:
                 st.success(f"File salvato in: {result['file_path']}")
-    
-    with col4:
-        if st.button("📄 Scarica come PDF", use_container_width=True):
-            try:
-                result = call_api("export", {
-                    "content": st.session_state.organized_text,
-                    "format": "pdf"
-                })
-                if result:
-                    st.success(f"File salvato in: {result['file_path']}")
-            except Exception as e:
-                st.error(str(e))
 
 if st.session_state.edited_text:
     st.header("✏️ Testo Modificato")
     st.markdown(st.session_state.edited_text)
     
     # Opzioni di esportazione per il testo modificato
-    col5, col6 = st.columns(2)
+    col5, _ = st.columns(2)
     with col5:
         if st.button("📥 Scarica come Markdown (Modificato)", use_container_width=True):
             result = call_api("export", {
@@ -166,18 +154,6 @@ if st.session_state.edited_text:
             })
             if result:
                 st.success(f"File salvato in: {result['file_path']}")
-    
-    with col6:
-        if st.button("📄 Scarica come PDF (Modificato)", use_container_width=True):
-            try:
-                result = call_api("export", {
-                    "content": st.session_state.edited_text,
-                    "format": "pdf"
-                })
-                if result:
-                    st.success(f"File salvato in: {result['file_path']}")
-            except Exception as e:
-                st.error(str(e))
 
 # Footer
 st.markdown("---")

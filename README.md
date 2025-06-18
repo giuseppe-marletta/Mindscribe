@@ -6,7 +6,7 @@ MindScribe è un'applicazione Python che utilizza l'intelligenza artificiale di 
 
 - **Organizzazione Automatica**: Trasforma testo non strutturato in documenti ben organizzati con capitoli e sezioni
 - **Modifica Intelligente**: Modifica il tono e lo stile del testo secondo le tue preferenze
-- **Esportazione**: Salva i documenti in formato Markdown o PDF
+- **Esportazione**: Salva i documenti in formato Markdown
 - **Logging**: Traccia tutte le interazioni con l'AI per la valutazione
 - **Interfaccia Web**: UI intuitiva e user-friendly basata su Streamlit
 
@@ -14,7 +14,7 @@ MindScribe è un'applicazione Python che utilizza l'intelligenza artificiale di 
 
 - Python 3.11+
 - Mistral AI API Key (ottienila gratuitamente su [Mistral AI](https://console.mistral.ai/))
-- wkhtmltopdf (per l'esportazione PDF)
+
 
 ## 🛠️ Installazione
 
@@ -79,7 +79,7 @@ streamlit run app/frontend.py
    - Il testo verrà modificato secondo le tue indicazioni
 
 4. **Esportazione**:
-   - Usa i pulsanti di esportazione per salvare il testo in Markdown o PDF
+   - Usa il pulsante di esportazione per salvare il testo in Markdown
    - I file verranno salvati nella cartella `output/`
 
 ## 📁 Struttura del Progetto
