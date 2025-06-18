@@ -6,6 +6,9 @@ import json
 from datetime import datetime
 import logging
 
+# Assicurati che la directory dei log esista
+os.makedirs('prompts_logs', exist_ok=True)
+
 # Configurazione del logging
 logging.basicConfig(
     filename=f'prompts_logs/mindscribe_{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}_{os.getpid()}.log',
