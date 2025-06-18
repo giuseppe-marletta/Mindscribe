@@ -73,6 +73,7 @@ with col1:
                 result = call_api("organize", {"content": text_input})
                 if result:
                     st.session_state.current_text = result["organized_text"]
+                    st.session_state.organized_text = result["organized_text"]
                     st.session_state.last_operation = "organize"
                     st.success("Testo organizzato con successo!")
         else:
@@ -109,6 +110,7 @@ if st.session_state.get('show_edit_form', False):
                         st.session_state.show_edit_form = True  # Mantieni il form aperto in caso di errore
                     else:
                         st.session_state.current_text = result["edited_text"]
+                        st.session_state.edited_text = result["edited_text"]
                         st.session_state.last_operation = "edit"
                         st.session_state.show_output = True  # Mostra l'output dopo la modifica
                         st.session_state.show_edit_form = False  # Nascondi il form dopo il successo
